@@ -61,30 +61,34 @@
  # Exercício 3
 
 class Biblioteca:
-    def __init__(self,nome,autor,ano_pub): #OBS parei no raciocínio de essa parte estar errada, afinal a classe biblioteca em si não precisa passar os atributos de um livro, e sim os seus métodos.
-        self.livro = Livro(nome,autor,ano_pub) #a biblioteca TEM UM livro
-        self.livros = [] #Lista de livros da biblioteca
+    def __init__(self):
+        self.livros = []  # A biblioteca guarda vários livros em uma lista
 
-    def adicionar(self,livro):
-        for l in self.livros:
-            if livro in l:
-                pass
-            else:
-                self.livros.append(livro)
+    def adicionar(self, livro):
+        # O 'not in' usa o __eq__ do Livro para verificar se já existe
+        if livro not in self.livros:
+            self.livros.append(livro)
+
     def listar(self):
         for l in self.livros:
-            print(f"{l}\n")
+            print(l)  # O print chama automaticamente o __str__ do Livro
+
+    def buscar_por_autor(self, autor):
+        livros_do_autor = []
+        for l in self.livros:
+            if l.autor == autor:
+                livros_do_autor.append(l)
+        return livros_do_autor
 
 
-    
+# --- Teste (igual ao slide) ---
+b = Biblioteca()
+L1 = Livro("Dom Casmurro", "Machado de Assis", 1899)
+L2 = Livro("Quincas Borba", "Machado de Assis", 1891)
 
+b.adicionar(L1)
+b.adicionar(L2)
+b.adicionar(L1)  # repetido: não entra por causa da verificação e do __eq__
 
-
-
-class Livro:
-    def __init__(self, nome, autor, ano_pub):
-        self.nome = nome
-        self.autor = autor
-        self.ano = ano_pub
-
-biblioteca = Biblioteca()
+b.listar()
+print(len(b.buscar_por_autor("Machado de Assis")))
