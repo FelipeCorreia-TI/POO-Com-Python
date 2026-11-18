@@ -30,15 +30,36 @@ P1.apresentar();
     
 
 
-
-
-
-
-
-
-
-
  # Exercício 2
+
+
+class Livro:
+    def __init__(self,nome,autor,ano_pub):
+        self.nome = nome
+        self.autor = autor
+        self.ano_pub = ano_pub
+
+    def __str__(self):
+        return f"{self.nome} ({self.autor}, {self.ano_pub})"
+
+    def __eq__(self,outro):
+        comparacao = self.nome == outro.nome and self.autor == outro.autor
+        return comparacao
+
+
+
+# nome = str(input("Nome do livro \n> "))
+# autor = str(input("Autor do livro \n> "))
+# ano_publicacao = str(input("Ano de publicação do livro \n> "))
+
+
+# L1= Livro(nome,autor,ano_publicacao)
+L1= Livro("Farenheit 451","Ray BradBury","1985")
+
+L2 = Livro("Dom Casmurro","Machado de Assis","1899")
+
+print(f"Exemplares: \n{L1}\n{L2}")
+print(f"É o mesmo livro? {L1 == L2}")
 
 
 
