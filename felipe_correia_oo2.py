@@ -1,68 +1,90 @@
- # Exercício 1  
-class Endereco:
-    def __init__(self,rua,numero,cidade):
-        self.rua=rua
-        self.cidade = cidade
-        self.numero =numero
+#  # Exercício 1  
+# class Endereco:
+#     def __init__(self,rua,numero,cidade):
+#         self.rua=rua
+#         self.cidade = cidade
+#         self.numero =numero
 
 
 
-class Pessoa:
-    def __init__(self,nome,rua,cidade,numero):
-        self.nome = nome
-        self.endereco = Endereco(rua,cidade,numero)
+# class Pessoa:
+#     def __init__(self,nome,rua,cidade,numero):
+#         self.nome = nome
+#         self.endereco = Endereco(rua,cidade,numero)
     
-    def apresentar(self):
-        return print(f"{self.nome} mora na Rua {self.endereco.rua}, {self.endereco.numero} - {self.endereco.cidade}")
+#     def apresentar(self):
+#         return print(f"{self.nome} mora na Rua {self.endereco.rua}, {self.endereco.numero} - {self.endereco.cidade}")
 
 
-nome = str(input("Qual o seu nome? \n> "))
-rua = str(input("Qual o nome da rua aonde você mora? \n> "))
-numero = str(input("Qual o número da sua residência? \n> "))
-cidade = str(input("Qual a cidade você mora? \n> ")) 
+# nome = str(input("Qual o seu nome? \n> "))
+# rua = str(input("Qual o nome da rua aonde você mora? \n> "))
+# numero = str(input("Qual o número da sua residência? \n> "))
+# cidade = str(input("Qual a cidade você mora? \n> ")) 
 
 
-P1 = Pessoa(nome,rua,numero,cidade)
+# P1 = Pessoa(nome,rua,numero,cidade)
 
-P1.apresentar();
+# P1.apresentar();
 
-
-    
 
 
  # Exercício 2
 
+# class Livro:
+#     def __init__(self,nome,autor,ano_pub):
+#         self.nome = nome
+#         self.autor = autor
+#         self.ano_pub = ano_pub
 
-class Livro:
-    def __init__(self,nome,autor,ano_pub):
-        self.nome = nome
-        self.autor = autor
-        self.ano_pub = ano_pub
+#     def __str__(self):
+#         return f"{self.nome} ({self.autor}, {self.ano_pub})"
 
-    def __str__(self):
-        return f"{self.nome} ({self.autor}, {self.ano_pub})"
-
-    def __eq__(self,outro):
-        comparacao = self.nome == outro.nome and self.autor == outro.autor
-        return comparacao
-
-
-
-# nome = str(input("Nome do livro \n> "))
-# autor = str(input("Autor do livro \n> "))
-# ano_publicacao = str(input("Ano de publicação do livro \n> "))
-
-
-# L1= Livro(nome,autor,ano_publicacao)
-L1= Livro("Farenheit 451","Ray BradBury","1985")
-
-L2 = Livro("Dom Casmurro","Machado de Assis","1899")
-
-print(f"Exemplares: \n{L1}\n{L2}")
-print(f"É o mesmo livro? {L1 == L2}")
+#     def __eq__(self,outro):
+#         comparacao = self.nome == outro.nome and self.autor == outro.autor
+#         return comparacao
 
 
 
+# # nome = str(input("Nome do livro \n> "))
+# # autor = str(input("Autor do livro \n> "))
+# # ano_publicacao = str(input("Ano de publicação do livro \n> "))
 
+
+# # L1= Livro(nome,autor,ano_publicacao)
+# L1= Livro("Farenheit 451","Ray BradBury","1985")
+
+# L2 = Livro("Dom Casmurro","Machado de Assis","1899")
+
+# print(f"Exemplares: \n{L1}\n{L2}")
+# print(f"É o mesmo livro? {L1 == L2}")
 
  # Exercício 3
+
+class Biblioteca:
+    def __init__(self,nome,autor,ano_pub): #OBS parei no raciocínio de essa parte estar errada, afinal a classe biblioteca em si não precisa passar os atributos de um livro, e sim os seus métodos.
+        self.livro = Livro(nome,autor,ano_pub) #a biblioteca TEM UM livro
+        self.livros = [] #Lista de livros da biblioteca
+
+    def adicionar(self,livro):
+        for l in self.livros:
+            if livro in l:
+                pass
+            else:
+                self.livros.append(livro)
+    def listar(self):
+        for l in self.livros:
+            print(f"{l}\n")
+
+
+    
+
+
+
+
+class Livro:
+    def __init__(self, nome, autor, ano_pub):
+        self.nome = nome
+        self.autor = autor
+        self.ano = ano_pub
+
+biblioteca = Biblioteca()
